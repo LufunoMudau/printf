@@ -71,15 +71,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			count += print_char(*format);
+	count += print_char(*format);
 		}
-
-		format++;
+	format++;
 	}
 
 	va_end(args);
 
 	return (count);
 }
-
-
