@@ -3,12 +3,43 @@
 #include <stdio.h>
 
 /**
+ * print_char - Print a character to stdout
+ * @c: Character to print
+ *
+ * Return: Number of characters printed (always 1)
+ */
+static int print_char(char c)
+{
+	putchar(c);
+	return (1);
+}
+
+/**
+ * print_str - Print a string to stdout
+ * @str: String to print
+ *
+ * Return: Number of characters printed
+ */
+static int print_str(const char *str)
+{
+	int count = 0;
+
+	while (*str != '\0')
+	{
+		putchar(*str);
+		count++;
+		str++;
+	}
+
+	return (count);
+
+/**
  * _printf - Custom prinf function to handle %c, %s and %%
  * @format: Format string
- *
- * Return: Number of characyers printed
+ *i
+ * Return: Number of characters printed
  */
-int _print(const char *format, ...)
+int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
@@ -23,31 +54,23 @@ int _print(const char *format, ...)
 			{
 				int character = va_arg(args, int);
 
-				putchar(character);
-				count++;
+				count += print_char((char)character);
 			}
 			else if (*(format + 1) == 's')
 			{
 				const char *str = va_arg(args, const char *);
 
-				while (*str != '\0')
-				{
-					putchar(*str);
-					count++;
-					str++;
-				}
+				count += print_str(str);
 			}
 			else if (*(format + 1) == '%')
 			{
-				putchar('%');
-				count++;
+				count += print_char('%');
 			}
 			format++;
 		}
 		else
 		{
-			putchar(*format);
-			count++;
+			count += print_char(*format);
 		}
 
 		format++;
