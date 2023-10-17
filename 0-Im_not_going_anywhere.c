@@ -32,9 +32,10 @@ static int print_str(const char *str)
 	}
 
 	return (count);
+}
 
 /**
- * _printf - Custom prinf function to handle %c, %s and %%
+ * _printf - Custom printf function to handle %c, %s and %%
  * @format: Format string
  *i
  * Return: Number of characters printed
@@ -80,4 +81,5 @@ int _printf(const char *format, ...)
 
 	return (count);
 }
+
 
